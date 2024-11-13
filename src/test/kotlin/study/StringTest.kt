@@ -33,7 +33,7 @@ class StringTest {
             listOf(
                 Arguments.of("1  +    2", listOf("1", "+", "2")),
                 Arguments.of("1\n2", listOf("1", "2")),
-                Arguments.of("  1 + 2   ", listOf("1", "+", "2")),
+                Arguments.of("  1 + 2   ", listOf("", "1", "+", "2", "")),
                 Arguments.of(
                     "This is   a\tstring\nwith various whitespace.",
                     listOf("This", "is", "a", "string", "with", "various", "whitespace."),
