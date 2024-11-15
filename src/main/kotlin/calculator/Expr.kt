@@ -2,11 +2,11 @@ package calculator
 
 sealed interface Expr
 
-class Literal(
+data class Literal(
     val value: Int,
 ) : Expr
 
-class Binary(
+data class Binary(
     val left: Expr,
     val operator: Operator,
     val right: Expr,
