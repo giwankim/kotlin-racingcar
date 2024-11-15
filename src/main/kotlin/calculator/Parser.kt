@@ -8,7 +8,7 @@ class Parser(
     val operators: Operators
 
     init {
-        require(tokens.size % 2 == 1) { "연산자와 피연산자의 숫자가 맞지 않습니다." }
+        require(tokens.size.isOdd()) { "연산자와 피연산자의 숫자가 맞지 않습니다." }
         val (operandTokens, operatorTokens) = tokens.withIndex().partition { it.index % 2 == 0 }
         operands = Operands(operandTokens.map { it.value })
         operators = Operators(operatorTokens.map { it.value })
@@ -28,3 +28,5 @@ class Parser(
         private val DELIMITER_REGEX = "\\s+".toRegex()
     }
 }
+
+private fun Int.isOdd(): Boolean = this % 2 == 1
