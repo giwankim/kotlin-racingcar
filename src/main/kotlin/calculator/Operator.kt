@@ -34,8 +34,7 @@ enum class Operator(
     ): Int
 
     companion object {
-        private val symbolToOperator = entries.associateBy(Operator::symbol)
-
-        fun fromSymbol(symbol: String): Operator = symbolToOperator[symbol] ?: throw IllegalArgumentException("${symbol}은 사칙 연산 기호가 아닙니다.")
+        fun fromSymbol(symbol: String): Operator =
+            entries.find { it.symbol == symbol } ?: throw IllegalArgumentException("${symbol}은 사칙 연산 기호가 아닙니다.")
     }
 }
