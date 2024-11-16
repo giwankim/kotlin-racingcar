@@ -2,7 +2,8 @@ package calculator
 
 sealed interface Expr
 
-data class Literal(
+@JvmInline
+value class Literal(
     val value: Int,
 ) : Expr
 
