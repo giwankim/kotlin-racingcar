@@ -1,7 +1,7 @@
 package racingcar.domain
 
 class Cars(
-    val size: Int,
+    size: Int,
 ) {
     private val cars = List(size) { Car() }
 
