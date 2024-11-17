@@ -10,8 +10,10 @@ data class GameResult(
 }
 
 data class RoundResult(
-    private val cars: Cars,
+    val positions: List<Int>,
 ) {
-    val positions: List<Int> = cars.positions
-    val size: Int = cars.size
+    val size: Int
+        get() = positions.size
+
+    constructor(cars: Cars) : this(cars.positions)
 }
