@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource
 @Suppress("NonAsciiCharacters")
 class CarTest {
     @ParameterizedTest
-    @ValueSource(strings = ["", "abcdef", "가나다라마바사아자차카타파하"])
+    @ValueSource(strings = ["", "abcdef", "가나다라마바"])
     fun `자동차의 이름이 비어 있거나 5자를 초과하면 예외를 던진다`(name: String) {
         shouldThrow<IllegalArgumentException> { Car(name) }
     }
