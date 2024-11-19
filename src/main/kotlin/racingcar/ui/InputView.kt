@@ -2,40 +2,39 @@ package racingcar.ui
 
 import racingcar.application.CreateGameCommand
 
-object InputView {
-    private const val NUMBER_OF_CARS_INPUT_PROMPT = "자동차 대수는 몇 대인가요?"
-    private const val NUMBER_OF_ROUNDS_INPUT_PROMPT = "시도할 회수는 몇 회인가요?"
-    private const val VALIDATION_FAIL_NUM_CARS_PROMPT = "자동차 수는 1 이상의 정수여야 합니다."
-    private const val VALIDATION_FAIL_NUM_ROUNDS_PROMPT = "횟수는 1 이상의 정수여야 합니다."
+private const val NAME_INPUT_PROMPT = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."
+private const val NAME_VALIDATION_FAIL_PROMPT = "자동차 이름을 공백으로 입력했습니다."
+private const val NUMBER_OF_ROUNDS_INPUT_PROMPT = "시도할 회수는 몇 회인가요?"
+private const val NUM_ROUNDS_VALIDATION_FAIL_PROMPT = "횟수는 1 이상의 정수여야 합니다."
+private const val NAME_DELIMITER = ","
 
-    fun getGameParameters(): CreateGameCommand {
-        val numberOfCars = getNumberOfCars()
-        val numberOfRounds = getNumberOfRounds()
-        return CreateGameCommand(numberOfCars, numberOfRounds)
-    }
+fun getGameParameters(): CreateGameCommand {
+    val names = getNames()
+    val numberOfRounds = getNumberOfRounds()
+    return CreateGameCommand(names, numberOfRounds)
+}
 
-    private fun getNumberOfCars(): Int {
-        println(NUMBER_OF_CARS_INPUT_PROMPT)
-        val rawInput = readln()
-        if (!validate(rawInput)) {
-            println(VALIDATION_FAIL_NUM_CARS_PROMPT)
-            return getNumberOfCars()
-        }
-        return rawInput.toInt()
+private fun getNames(): List<String> {
+    println(NAME_INPUT_PROMPT)
+    val line = readln()
+    if (line.isBlank()) {
+        println(NAME_VALIDATION_FAIL_PROMPT)
+        return getNames()
     }
+    return line.trim().split(NAME_DELIMITER)
+}
 
-    private fun getNumberOfRounds(): Int {
-        println(NUMBER_OF_ROUNDS_INPUT_PROMPT)
-        val rawInput = readln()
-        if (!validate(rawInput)) {
-            println(VALIDATION_FAIL_NUM_ROUNDS_PROMPT)
-            return getNumberOfRounds()
-        }
-        return rawInput.toInt()
+private fun getNumberOfRounds(): Int {
+    println(NUMBER_OF_ROUNDS_INPUT_PROMPT)
+    val rawInput = readln()
+    if (!validate(rawInput)) {
+        println(NUM_ROUNDS_VALIDATION_FAIL_PROMPT)
+        return getNumberOfRounds()
     }
+    return rawInput.toInt()
+}
 
-    private fun validate(rawInput: String): Boolean {
-        val result = rawInput.toIntOrNull()
-        return result != null && result > 0
-    }
+private fun validate(rawInput: String): Boolean {
+    val result = rawInput.toIntOrNull()
+    return result != null && result > 0
 }
