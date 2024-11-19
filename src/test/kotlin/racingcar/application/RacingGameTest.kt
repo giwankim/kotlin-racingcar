@@ -9,12 +9,13 @@ class RacingGameTest {
     private val numberOfCars = 3
     private val numberOfRounds = 5
     private val alwaysMoveForward: () -> Boolean = { true }
+    private val names = listOf("pobi", "crong", "honux")
 
     private lateinit var game: RacingGame
 
     @BeforeEach
     fun setUp() {
-        game = RacingGame(CreateGameCommand(numberOfCars, numberOfRounds))
+        game = RacingGame(CreateGameCommand(names, numberOfRounds))
     }
 
     @Test

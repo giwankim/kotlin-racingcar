@@ -9,7 +9,7 @@ class RacingGame(
     command: CreateGameCommand,
 ) {
     private val numberOfRounds: Int = command.numberOfRounds
-    private val cars: Cars = Cars(command.numberOfCars)
+    private val cars: Cars = Cars(command.names)
 
     fun play(moveStrategy: MoveStrategy): GameResult {
         val result: MutableList<RoundResult> = mutableListOf()
@@ -22,6 +22,6 @@ class RacingGame(
 }
 
 data class CreateGameCommand(
-    val numberOfCars: Int,
+    val names: List<String>,
     val numberOfRounds: Int,
 )
