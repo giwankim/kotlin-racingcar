@@ -1,15 +1,13 @@
-package racingcar.application
+package racingcar.domain
 
-import racingcar.domain.Cars
-
-data class GameResult(
+class GameResult(
     val resultsByRound: List<RoundResult>,
 ) {
     val numberOfRounds: Int = resultsByRound.size
     val numberOfCars: Int = resultsByRound.firstOrNull()?.numberOfCars ?: 0
 }
 
-data class RoundResult(
+class RoundResult(
     val positions: List<Int>,
 ) {
     val numberOfCars: Int

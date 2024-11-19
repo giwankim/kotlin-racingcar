@@ -1,7 +1,7 @@
 package racingcar.ui
 
-import racingcar.application.GameResult
-import racingcar.application.RoundResult
+import racingcar.domain.GameResult
+import racingcar.domain.RoundResult
 
 private const val RESULTS_HEADER = "\n실행 결과"
 private const val POSITION_DELIMITER = "-"

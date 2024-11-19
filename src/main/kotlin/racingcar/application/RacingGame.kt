@@ -1,7 +1,9 @@
 package racingcar.application
 
 import racingcar.domain.Cars
+import racingcar.domain.GameResult
 import racingcar.domain.MoveStrategy
+import racingcar.domain.RoundResult
 
 class RacingGame(
     command: CreateGameCommand,
