@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 class CarsTest {
     @Test
     fun `이동할 경우 위치가 변경된다`() {
-        val cars = Cars(3)
+        val cars = Cars(listOf("a", "b", "c"))
         cars.move { true }
         cars.positions.forAll { it shouldBe 1 }
     }
