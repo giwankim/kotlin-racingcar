@@ -1,9 +1,9 @@
 package racingcar.domain
 
 class Cars(
-    size: Int,
+    numberOfCars: Int,
 ) {
-    private val cars = List(size) { Car() }
+    private val cars = List(numberOfCars) { Car() }
 
     val positions: List<Int>
         get() = cars.map { it.position }
