@@ -1,6 +1,6 @@
 package racingcar.ui
 
-import racingcar.application.CreateGameCommand
+import racingcar.application.PlayGameCommand
 
 object InputView {
     private const val NAME_INPUT_PROMPT = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."
@@ -9,10 +9,10 @@ object InputView {
     private const val NUM_ROUNDS_VALIDATION_FAIL_PROMPT = "횟수는 1 이상의 정수여야 합니다."
     private const val NAME_DELIMITER = ","
 
-    fun getGameParameters(): CreateGameCommand {
+    fun getGameParameters(): PlayGameCommand {
         val names = getNames()
         val numberOfRounds = getNumberOfRounds()
-        return CreateGameCommand(names, numberOfRounds)
+        return PlayGameCommand(names, numberOfRounds)
     }
 
     private fun getNames(): List<String> {
