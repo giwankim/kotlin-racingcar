@@ -2,14 +2,14 @@ package racingcar
 
 import racingcar.application.RacingGame
 import racingcar.domain.RandomMoveStrategy
-import racingcar.ui.getGameParameters
-import racingcar.ui.printResult
+import racingcar.ui.InputView
+import racingcar.ui.ResultView
 
 fun main() {
-    val command = getGameParameters()
+    val command = InputView.getGameParameters()
 
     val game = RacingGame(command)
 
     val result = game.play(RandomMoveStrategy())
-    printResult(result)
+    ResultView.printResult(result)
 }
