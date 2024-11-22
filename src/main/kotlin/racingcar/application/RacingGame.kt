@@ -6,13 +6,14 @@ import racingcar.domain.MoveStrategy
 import racingcar.domain.RoundResult
 
 class RacingGame(
-    command: CreateGameCommand,
+    private val moveStrategy: MoveStrategy,
 ) {
-    private val numberOfRounds: Int = command.numberOfRounds
-    private val cars: Cars = Cars(command.names)
+    fun play(command: PlayGameCommand): GameResult {
+        val (names, numberOfRounds) = command
 
-    fun play(moveStrategy: MoveStrategy): GameResult {
         val result: MutableList<RoundResult> = mutableListOf()
+
+        val cars = Cars(names)
         repeat(numberOfRounds) {
             cars.move(moveStrategy)
             result.add(RoundResult(cars))
@@ -21,7 +22,7 @@ class RacingGame(
     }
 }
 
-data class CreateGameCommand(
+data class PlayGameCommand(
     val names: List<String>,
     val numberOfRounds: Int,
 )
